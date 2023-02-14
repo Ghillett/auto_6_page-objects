@@ -13,17 +13,25 @@ public class DataHelper {
     }
 
     @Value
-    public static class CardsInfo {
-        private String firstCard;
-        private String secondCard;
+    public static class CardInfo {
+        String cardNumber;
+        String testId;
+    }
+
+    public static CardInfo getFirstCardInfo() {
+        return new CardInfo("5559 0000 0000 0001", "92df3f1c-a033-48e6-8390-206f6b1f56c0");
+    }
+
+    public static CardInfo getSecondCardInfo() {
+        return new CardInfo("5559 0000 0000 0002", "0f3f5c2a-249e-4c3d-8287-09f7a039391d");
+    }
+
+    public static CardInfo getWrongCardInfo() {
+        return new CardInfo("5559 0000 0000 0003", "000");
     }
 
     public static AuthInfo getAuthInfo() {
         return new AuthInfo("vasya", "qwerty123");
-    }
-
-    public static CardsInfo getCardsInfo() {
-        return new CardsInfo("5559 0000 0000 0001", "5559 0000 0000 0002");
     }
 
     @Value
