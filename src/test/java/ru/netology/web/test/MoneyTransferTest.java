@@ -140,11 +140,7 @@ public class MoneyTransferTest {
         var transferPage = dashboardPage.transferToSecond();
         transferPage.transfer(amount, DataHelper.getFirstCardInfo());
 
-        int actualBalanceFirstCard = dashboardPage.getCardBalance(firstCardId);
-        int actualBalanceSecondCard = dashboardPage.getCardBalance(secondCardId);
-
-        Assertions.assertEquals(expectedBalanceSecondCard, actualBalanceSecondCard);
-        Assertions.assertEquals(expectedBalanceFirstCard, actualBalanceFirstCard);
+        transferPage.getError();
     }
 
     @Test
