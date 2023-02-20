@@ -1,6 +1,5 @@
 package ru.netology.web.test;
 
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -101,12 +100,8 @@ public class MoneyTransferTest {
     public void shouldTestTransferToFirstCardOverLimit() {
 
         String amount = "10001";
-        int expectedBalanceFirstCard = 20001;
-        int expectedBalanceSecondCard = -1;
 
         var loginPage = new LoginPage();
-        var firstCardId = DataHelper.getFirstCardInfo().getTestId();
-        var secondCardId = DataHelper.getSecondCardInfo().getTestId();
 
         var authInfo = DataHelper.getAuthInfo();
 
@@ -120,12 +115,8 @@ public class MoneyTransferTest {
     public void shouldTestTransferToSecondCardOverLimit() {
 
         String amount = "10001";
-        int expectedBalanceSecondCard = 20001;
-        int expectedBalanceFirstCard = -1;
 
         var loginPage = new LoginPage();
-        var firstCardId = DataHelper.getFirstCardInfo().getTestId();
-        var secondCardId = DataHelper.getSecondCardInfo().getTestId();
 
         var authInfo = DataHelper.getAuthInfo();
 
