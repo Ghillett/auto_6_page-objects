@@ -113,13 +113,7 @@ public class MoneyTransferTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var dashboardPage = verificationPage.validVerify(DataHelper.getVerificationCodeFor(authInfo));
         var transferPage = dashboardPage.transferToFirst();
-        transferPage.transfer(amount, DataHelper.getSecondCardInfo());
-
-        int actualBalanceFirstCard = dashboardPage.getCardBalance(firstCardId);
-        int actualBalanceSecondCard = dashboardPage.getCardBalance(secondCardId);
-
-        Assertions.assertEquals(expectedBalanceFirstCard, actualBalanceFirstCard);
-        Assertions.assertEquals(expectedBalanceSecondCard, actualBalanceSecondCard);
+        transferPage.transferWithError(amount, DataHelper.getSecondCardInfo());
     }
 
     @Test
@@ -138,9 +132,7 @@ public class MoneyTransferTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var dashboardPage = verificationPage.validVerify(DataHelper.getVerificationCodeFor(authInfo));
         var transferPage = dashboardPage.transferToSecond();
-        transferPage.transfer(amount, DataHelper.getFirstCardInfo());
-
-        transferPage.getError();
+        transferPage.transferWithError(amount, DataHelper.getFirstCardInfo());
     }
 
     @Test
@@ -155,7 +147,6 @@ public class MoneyTransferTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var dashboardPage = verificationPage.validVerify(DataHelper.getVerificationCodeFor(authInfo));
         var transferPage = dashboardPage.transferToFirst();
-        transferPage.transfer(amount, DataHelper.getWrongCardInfo());
-        transferPage.getError();
+        transferPage.transferWithError(amount, DataHelper.getWrongCardInfo());
     }
 }
